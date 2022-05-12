@@ -1,0 +1,32 @@
+.list {
+  overflow: auto;
+  margin: 30px;
+  &__tickets {
+    margin: 40px;
+  }
+  &__ticket {
+    border: 1px solid black;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15%;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  &__ticketTask {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__userAvatar {
+    padding: 10px;
+    border-radius: 50%;
+    > p {
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 38px;
+      color: white;
+    }
+  }
+}
