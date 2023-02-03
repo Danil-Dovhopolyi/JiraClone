@@ -1,6 +1,9 @@
-export type ITodo = {
-  user_id: number;
+import { TStateTodo } from './TStateTodo';
+
+export interface ITodo {
+  userId: number;
   id: number;
   title: string;
   completed: false;
-};
+  state: TStateTodo;
+}

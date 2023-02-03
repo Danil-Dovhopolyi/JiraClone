@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export async function GetTodoRequest() {
+export async function GetUserRequest() {
   try {
     const { data, status } = await axios.get(
-      'https://jsonplaceholder.typicode.com/todos?&_limit=50',
+      'https://jsonplaceholder.typicode.com/users',
       {
         headers: {
           Accept: 'application/json',
