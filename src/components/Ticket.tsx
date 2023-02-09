@@ -22,6 +22,7 @@ export default function Ticket(todo: {
         if (user.id === todo.userId) {
           return (
             <div
+              key={user.id}
               className="task"
               style={{
                 display: 'flex',

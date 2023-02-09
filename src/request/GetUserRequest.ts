@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export async function GetUserRequest() {
   try {
-    const { data, status } = await axios.get(
+    const { data } = await axios.get(
       'https://jsonplaceholder.typicode.com/users',
       {
         headers: {
@@ -10,8 +10,6 @@ export async function GetUserRequest() {
         },
       }
     );
-    // 👇️ "response status is: 200"
-    console.log('response status is: ', status);
 
     return data;
   } catch (error) {

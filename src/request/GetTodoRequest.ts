@@ -1,8 +1,15 @@
 import axios from 'axios';
+import { ITodo } from '../types/ITodo';
+import { TodoStates } from '../types/TodoStates';
+
+type GetTodoResponse = {
+  data: ITodo[];
+  status: number;
+};
 
 export async function GetTodoRequest() {
   try {
-    const { data, status } = await axios.get(
+    const todoResponse = await axios.get<string, GetTodoResponse>(
       'https://jsonplaceholder.typicode.com/todos?&_limit=50',
       {
         headers: {
@@ -10,17 +17,21 @@ export async function GetTodoRequest() {
         },
       }
     );
-    // 👇️ "response status is: 200"
-    console.log('response status is: ', status);
 
-    return data;
+    let todoList = todoResponse.data;
+
+    todoList.forEach((item) => {
+      item.state = item.completed ? TodoStates.Done : TodoStates.Todo;
+    });
+
+    return todoList;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.log('error message: ', error.message);
-      return error.message;
+      return [];
     } else {
       console.log('unexpected error: ', error);
-      return 'An unexpected error occurred';
+      return [];
     }
   }
 }
